@@ -2,7 +2,7 @@ const data = [
     { slNo: 1, title: "Portfolio", link: "https://www.rocktimsharma.me/" },
     { slNo: 2, title: "Aarohan ITI", link: "https://aarohaniti.online/" },
     { slNo: 3, title: "Cake Bake", link: "https://junalicake.000webhostapp.com/" },
-    { slNo: 4, title: "Match Parenthesis", link: "https://rocktimsharma.github.io/projects/match-parenthesis.html" }
+    { slNo: 4, title: "Match Parenthesis", link: "https://rocktimsharma.github.io/projects/html/match-parenthesis.html" }
 ];
 
 // Function to create table rows dynamically
