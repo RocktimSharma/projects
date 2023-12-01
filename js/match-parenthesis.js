@@ -110,6 +110,43 @@ function drag(event) {
   event.dataTransfer.setData("text", event.target.innerText);
 }
 
+function touchStart(event) {
+  event.preventDefault();
+  const touch = event.touches[0];
+  const dragItem = touch.target.innerText;
+
+  push(dragItem);
+
+  // Remove the touched item from the draggable container
+  const touchedItem = document.querySelector(".draggable-item");
+  if (touchedItem) {
+    touchedItem.remove();
+  }
+
+  // If touched in the stack container, generate a new random set
+  const newDraggableItem = document.createElement("div");
+  newDraggableItem.className = "draggable-item";
+  newDraggableItem.innerText = generateRandomParenthesis();
+  newDraggableItem.ontouchstart = function (e) {
+    touchStart(e);
+  };
+
+  document
+    .getElementById("draggable-container")
+    .appendChild(newDraggableItem);
+}
+
+// Function to handle touch move event
+function touchMove(event) {
+  event.preventDefault();
+}
+
+// Function to handle touch end event
+function touchEnd(event) {
+  event.preventDefault();
+}
+
+
 function generateRandomParenthesis() {
   // Randomly decide whether to add an opening or closing parenthesis
   const brackets = ["(", ")", "[", "]", "{", "}"];
@@ -173,5 +210,9 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     draggableContainer.appendChild(draggableItem);
+
+    
   }
+  document.addEventListener("touchmove", touchMove);
+  document.addEventListener("touchend", touchEnd);
 });
